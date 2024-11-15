@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      main
+
+jobs:
+  lint_test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: lint
+        run: ./gradlew lintRelease
+
+      - name: test
+        run: ./gradlew testReleaseUnitTest
+
+        
+        
